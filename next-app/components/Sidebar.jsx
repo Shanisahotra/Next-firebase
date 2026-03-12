@@ -2,11 +2,9 @@
 
 export default function Sidebar() {
   return (
-<nav class="bg-white shadow-md border-r border-gray-200 h-screen fixed top-0 left-0 min-w-[250px] py-6 px-4 overflow-auto">
-      <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" />
-      </a>
-
-      <ul class="mt-6">
+<nav class="bg-white shadow-md border-r mt-18 border-gray-200 h-screen fixed top-0 left-0 min-w-[250px] py-6 px-4 overflow-auto">
+      
+      <ul>
         <li>
           <a href="javascript:void(0)"
             class="text-slate-800 font-medium hover:text-slate-900 text-[15px] flex items-center hover:bg-gray-100 rounded px-4 py-2 transition-all">

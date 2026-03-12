@@ -1,10 +1,10 @@
 "use client"; // needed for client-side components
+import Link from "next/link";
 
 
-
-export default function HelloWorld() {
+export default function Navbar() {
   return (
-<header class="flex shadow-md py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
+    <header class="flex shadow-md py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
       <div class="flex flex-wrap items-center justify-between gap-5 w-full">
         <a href="javascript:void(0)" class="max-sm:hidden"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" /></a>
         <a href="javascript:void(0)" class="hidden max-sm:block"><img src="https://readymadeui.com/readymadeui-short.svg" alt="logo" class="w-9" /></a>
@@ -28,9 +28,13 @@ export default function HelloWorld() {
               <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" />
               </a>
             </li>
-            <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
-              <a href='javascript:void(0)'
-                class="hover:text-blue-700 text-blue-700 block font-medium text-[15px]">Home</a>
+            <li className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
+              <Link
+                href="/home"
+                className="hover:text-blue-700 text-blue-700 block font-medium text-[15px]"
+              >
+                Home
+              </Link>
             </li>
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3"><a href='javascript:void(0)'
               class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Team</a>
