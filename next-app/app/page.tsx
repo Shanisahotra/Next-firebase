@@ -1,12 +1,8 @@
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar"
-import Home1 from "./home/page"
+import LoginForm from "../components/loginForm";
 export default function Home() {
   return (
      <>
-      <Navbar/>
-      <Home1/>
-      <Sidebar/>
+     <LoginForm/>
     </>
   );
 }
