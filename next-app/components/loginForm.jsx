@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function loginForm() {
 
@@ -10,15 +11,25 @@ export default function loginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const staticEmail = "admin@gmail.com";
-    const staticPassword = "123456";
+    try{
+     
+      const res =  await axios.post("http://localhost:3000/api/auth/login",{
+        email,
+        password,
+      });
+     console.log("Response:", res.data);
 
-   if (email === staticEmail && password === staticPassword) {
-  router.push("/dashboard");
-}
+      // ✅ Token save (agar JWT use kar rahe ho)
+      localStorage.setItem("token", res.data.token);
+
+         router.push("/dashboard");
+    } catch (error) {
+       console.error("Error:", error.response?.data || error.message);
+      alert(error.response?.data?.message || "Login Failed ❌");
+    }
   };
 
   return (
