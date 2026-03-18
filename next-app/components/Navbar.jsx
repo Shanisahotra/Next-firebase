@@ -1,8 +1,16 @@
-"use client"; // needed for client-side components
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 
 export default function Navbar() {
+  const router = useRouter();
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      router.push("/login");
+  };
+
   return (
     <header class="flex shadow-md py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
       <div class="flex flex-wrap items-center justify-between gap-5 w-full">
@@ -58,8 +66,8 @@ export default function Navbar() {
           <button
             class="px-4 py-2 text-sm rounded-full font-medium cursor-pointer tracking-wide text-slate-900 border border-gray-400 bg-transparent hover:bg-gray-50 transition-all">Login</button>
           <button
-            class="px-4 py-2 text-sm rounded-full font-medium cursor-pointer tracking-wide text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all">Sign
-            up</button>
+            class="px-4 py-2 text-sm rounded-full font-medium cursor-pointer tracking-wide text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all" 
+            onClick={handleLogout}>Logout</button>
 
           <button id="toggleOpen" class="lg:hidden cursor-pointer">
             <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
