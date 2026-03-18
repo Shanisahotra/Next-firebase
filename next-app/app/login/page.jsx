@@ -1,10 +1,10 @@
-import LoginForm from "@/components/LoginForm";
-import Dashboard from "../dashboard/page";
+"use client";
+// import LoginForm from "@/components/LoginForm";
+import LogingForm from "../../components/loginForm"
 export default function LoginPage() {
   return (
     <div>
-      <LoginForm />
-      <Dashboard to='/dashboard'/>
+      <LogingForm />
     </div>
   );
 }
