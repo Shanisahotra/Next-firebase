@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongodb";
 import Register from "../../../../models/Register";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { sendEmail } from "../../../../lib/sendEmail";
 
 export async function POST(req) {
   await connectDB();
@@ -26,6 +27,19 @@ export async function POST(req) {
     { id: user._id, email: user.email },
     process.env.JWT_SECRET,
     { expiresIn: "7d" }
+  );
+
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  user.otp = otp;
+  user.otpExpire = Date.now() + 5 * 60 * 1000;
+  await user.save();
+
+  // ✅ Send Email
+  await sendEmail(
+    user.email,
+    "Your OTP Code",
+    `Your OTP is ${otp}`
   );
 
   return NextResponse.json({
